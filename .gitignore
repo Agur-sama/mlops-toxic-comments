@@ -1,0 +1,44 @@
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+junit.xml
+.env
+.idea/
+.vscode/
+build/
+dist/
+*.egg-info/
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+artifacts/models/*
+!artifacts/models/.gitkeep
+!artifacts/models/tfidf_logreg_preprocess_standard.joblib
+!artifacts/models/model_metadata.json
+artifacts/predictions/*
+!artifacts/predictions/.gitkeep
+report/qa/
+report/qa_*/
+
+# DVC cache is local. The compact MLflow file store is intentionally versioned
+# so a reviewer can inspect the three final run IDs after cloning the tag.
+.mlflow/
+.dvc/cache/
+.dvc/tmp/
+
+# Official Kaggle data are downloaded under the competition terms.
+/train.csv
+/test.csv
+/test_labels.csv
+/sample_submission.csv
+/results/
+/toxic_comments_coursework.ipynb
+
+.ipynb_checkpoints/

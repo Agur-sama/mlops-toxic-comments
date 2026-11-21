@@ -1,0 +1,44 @@
+{
+  "source_path": "/Users/maksim/Documents/ChatGPT/курсовая по nlp/data/raw/jigsaw-toxic-comment-classification-challenge/train.csv",
+  "source_size_bytes": 68802655,
+  "rows": 159571,
+  "columns": 10,
+  "missing_values": {
+    "id": 0,
+    "comment_text": 0,
+    "toxic": 0,
+    "severe_toxic": 0,
+    "obscene": 0,
+    "threat": 0,
+    "insult": 0,
+    "identity_hate": 0,
+    "char_length": 0,
+    "word_length": 0
+  },
+  "full_duplicate_rows": 0,
+  "duplicate_text_rows": 0,
+  "unique_ids": 159571,
+  "unique_texts": 159571,
+  "label_counts": {
+    "toxic": 15294,
+    "severe_toxic": 1595,
+    "obscene": 8449,
+    "threat": 478,
+    "insult": 7877,
+    "identity_hate": 1405
+  },
+  "toxic_share": 0.09584448302009764,
+  "non_toxic_share": 0.9041555169799024,
+  "character_length": {
+    "mean": 394.0732213246768,
+    "median": 205.0,
+    "p95": 1355.0,
+    "max": 5000
+  },
+  "word_length": {
+    "mean": 67.27352714465661,
+    "median": 36.0,
+    "p95": 230.0,
+    "max": 1411
+  }
+}

@@ -1,0 +1,133 @@
+schema: '2.0'
+stages:
+  data_v1:
+    cmd: python3 scripts/build_data_versions.py --variant v1 --output 
+      data/versions/v1_minimal.json
+    deps:
+    - path: data/processed/split_manifest.csv
+      hash: md5
+      md5: 4d159c4fab5a0d24988e5c781cb5aab6
+      size: 3765886
+    - path: data/raw/jigsaw-toxic-comment-classification-challenge/train.csv
+      hash: md5
+      md5: 791e42335500c447273a7dc85f58239e
+      size: 68802655
+    - path: scripts/build_data_versions.py
+      hash: md5
+      md5: f4ac86bd1f23054ae6974b0e707cd3a9
+      size: 2954
+    - path: src/toxicity/preprocessing.py
+      hash: md5
+      md5: 112079b13666c753c5d20b83a979cec4
+      size: 1822
+    params:
+      config/default.yaml:
+        data_versions.v1:
+          id: jigsaw-minimal-v1
+          preprocessing: minimal
+        project.seed: 42
+    outs:
+    - path: data/versions/v1_minimal.json
+      hash: md5
+      md5: 1c8a2d810f4ae90d5ba4c0532d1fa298
+      size: 855
+  data_v2:
+    cmd: python3 scripts/build_data_versions.py --variant v2 --output 
+      data/versions/v2_standard.json
+    deps:
+    - path: data/processed/split_manifest.csv
+      hash: md5
+      md5: 4d159c4fab5a0d24988e5c781cb5aab6
+      size: 3765886
+    - path: data/raw/jigsaw-toxic-comment-classification-challenge/train.csv
+      hash: md5
+      md5: 791e42335500c447273a7dc85f58239e
+      size: 68802655
+    - path: scripts/build_data_versions.py
+      hash: md5
+      md5: f4ac86bd1f23054ae6974b0e707cd3a9
+      size: 2954
+    - path: src/toxicity/preprocessing.py
+      hash: md5
+      md5: 112079b13666c753c5d20b83a979cec4
+      size: 1822
+    params:
+      config/default.yaml:
+        data_versions.v2:
+          id: jigsaw-standard-v2
+          preprocessing: standard
+        project.seed: 42
+    outs:
+    - path: data/versions/v2_standard.json
+      hash: md5
+      md5: d1587df3773a9a091d85da43998eb14f
+      size: 857
+  experiments:
+    cmd: python3 scripts/register_experiments.py
+    deps:
+    - path: artifacts/models/model_metadata.json
+      hash: md5
+      md5: 3e1d22cb1c0952d191628c5bda106259
+      size: 821
+    - path: artifacts/results/classical_results.json
+      hash: md5
+      md5: c450173f959b3e19380ad1128d2a6eb7
+      size: 16550
+    - path: scripts/register_experiments.py
+      hash: md5
+      md5: a2fef5314075dfaf2c8fcda92b29c8d5
+      size: 4614
+    params:
+      config/default.yaml:
+        classical:
+          max_features: 120000
+          min_df: 2
+          ngram_range:
+          - 1
+          - 2
+          sublinear_tf: true
+          max_iter: 1000
+          logistic_c: 4.0
+          svm_c: 1.0
+        train:
+          experiment_name: toxic-comment-classification
+          tracking_uri: mlruns
+          selection_metric: validation_f1
+          data_version: jigsaw-standard-v2
+          registered_model_name: toxic-comment-tfidf-logreg
+    outs:
+    - path: artifacts/results/mlflow_runs.json
+      hash: md5
+      md5: bdb7b149fd84917ab1b0ed84b1771263
+      size: 908
+  prepare_split:
+    cmd: python3 scripts/prepare_data.py
+    deps:
+    - path: data/raw/jigsaw-toxic-comment-classification-challenge/train.csv
+      hash: md5
+      md5: 791e42335500c447273a7dc85f58239e
+      size: 68802655
+    - path: scripts/prepare_data.py
+      hash: md5
+      md5: 010f1fc3ca5fed7728c299ff0217ea9d
+      size: 845
+    - path: src/toxicity/data.py
+      hash: md5
+      md5: 5bc609dfb9e80354f731289fcb0024c4
+      size: 7162
+    params:
+      config/default.yaml:
+        project.seed: 42
+        split:
+          train_size: 0.7
+          validation_size: 0.15
+          test_size: 0.15
+    outs:
+    - path: data/processed/split_manifest.csv
+      hash: md5
+      md5: 4d159c4fab5a0d24988e5c781cb5aab6
+      size: 3765886
+    - path: data/processed/split_summary.json
+      hash: md5
+      md5: 64e768a65d9c74ecf3ea7d720149ea98
+      size: 235

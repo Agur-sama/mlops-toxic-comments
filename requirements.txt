@@ -1,0 +1,3 @@
+# Compatibility entry point. The generated lock file contains exact transitive pins.
+-r requirements-dev.lock
+

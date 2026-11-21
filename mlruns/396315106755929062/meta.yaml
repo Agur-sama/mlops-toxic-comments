@@ -1,0 +1,6 @@
+artifact_location: mlruns/396315106755929062
+creation_time: 1795277577142
+experiment_id: '396315106755929062'
+last_update_time: 1795277577142
+lifecycle_stage: active
+name: toxic-comment-classification

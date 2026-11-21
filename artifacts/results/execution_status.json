@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-11-19",
+  "dataset_download": {
+    "status": "completed_from_user_archive",
+    "reason": "Официальный архив Jigsaw предоставлен пользователем и размещён в data/raw/.",
+    "policy": "Ограничения Kaggle не обходились; использован переданный архив с train.csv, test.csv, test_labels.csv и sample_submission.csv."
+  },
+  "eda": {
+    "status": "completed",
+    "reason": "EDA выполнен на 159571 строках; результаты сохранены в eda_summary.json и PNG."
+  },
+  "classical_models": {
+    "status": "completed",
+    "reason": "Выполнено 16 полных прогонов на едином split; all_results.csv содержит фактические метрики."
+  },
+  "distilbert": {
+    "status": "not_run",
+    "reason": "Данные доступны, но PyTorch/Transformers и веса модели не установлены; RUN_BERT оставлен выключенным."
+  },
+  "report": {
+    "status": "generated_from_completed_classical_run",
+    "note": "Документ пересобран из фактических EDA, метрик, графиков и анализа ошибок; DistilBERT явно отмечен как невыполненный."
+  }
+}

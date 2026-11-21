@@ -1,0 +1,60 @@
+stages:
+  prepare_split:
+    cmd: python3 scripts/prepare_data.py
+    deps:
+      - data/raw/jigsaw-toxic-comment-classification-challenge/train.csv
+      - scripts/prepare_data.py
+      - src/toxicity/data.py
+    params:
+      - config/default.yaml:
+          - project.seed
+          - split
+    outs:
+      - data/processed/split_manifest.csv
+    metrics:
+      - data/processed/split_summary.json:
+          cache: false
+
+  data_v1:
+    cmd: python3 scripts/build_data_versions.py --variant v1 --output data/versions/v1_minimal.json
+    deps:
+      - data/raw/jigsaw-toxic-comment-classification-challenge/train.csv
+      - data/processed/split_manifest.csv
+      - scripts/build_data_versions.py
+      - src/toxicity/preprocessing.py
+    params:
+      - config/default.yaml:
+          - project.seed
+          - data_versions.v1
+    metrics:
+      - data/versions/v1_minimal.json:
+          cache: false
+
+  data_v2:
+    cmd: python3 scripts/build_data_versions.py --variant v2 --output data/versions/v2_standard.json
+    deps:
+      - data/raw/jigsaw-toxic-comment-classification-challenge/train.csv
+      - data/processed/split_manifest.csv
+      - scripts/build_data_versions.py
+      - src/toxicity/preprocessing.py
+    params:
+      - config/default.yaml:
+          - project.seed
+          - data_versions.v2
+    metrics:
+      - data/versions/v2_standard.json:
+          cache: false
+
+  experiments:
+    cmd: python3 scripts/register_experiments.py
+    deps:
+      - artifacts/results/classical_results.json
+      - artifacts/models/model_metadata.json
+      - scripts/register_experiments.py
+    params:
+      - config/default.yaml:
+          - train
+          - classical
+    metrics:
+      - artifacts/results/mlflow_runs.json:
+          cache: false

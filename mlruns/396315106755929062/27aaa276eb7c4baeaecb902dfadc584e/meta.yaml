@@ -1,0 +1,15 @@
+artifact_uri: mlruns/396315106755929062/27aaa276eb7c4baeaecb902dfadc584e/artifacts
+end_time: 1795277577313
+entry_point_name: ''
+experiment_id: '396315106755929062'
+lifecycle_stage: active
+run_id: 27aaa276eb7c4baeaecb902dfadc584e
+run_name: bow_multinomial_nb
+run_uuid: 27aaa276eb7c4baeaecb902dfadc584e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1795277577300
+status: 3
+tags: []
+user_id: student

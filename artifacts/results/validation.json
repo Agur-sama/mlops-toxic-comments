@@ -1,0 +1,28 @@
+{
+  "status": "ok",
+  "python_files_parsed": [
+    "main.py",
+    "scripts/build_notebook.py",
+    "scripts/download_data.py",
+    "scripts/download_nltk.py",
+    "scripts/execute_notebook.py",
+    "scripts/generate_report.py",
+    "scripts/run_eda.py",
+    "scripts/train_bert.py",
+    "scripts/train_classical.py",
+    "scripts/validate_project.py",
+    "src/toxicity/__init__.py",
+    "src/toxicity/bert.py",
+    "src/toxicity/classical.py",
+    "src/toxicity/config.py",
+    "src/toxicity/data.py",
+    "src/toxicity/eda.py",
+    "src/toxicity/error_analysis.py",
+    "src/toxicity/metrics.py",
+    "src/toxicity/plots.py",
+    "src/toxicity/preprocessing.py",
+    "src/toxicity/report.py",
+    "src/toxicity/validation.py"
+  ],
+  "count": 22
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "run_id": "27aaa276eb7c4baeaecb902dfadc584e",
+    "run_name": "bow_multinomial_nb",
+    "data_version": "jigsaw-minimal-v1",
+    "git_sha": "1fe86b49b85f242e7fd0635b888059c1389384df",
+    "validation_f1": 0.6927071573718673,
+    "test_f1": 0.6996353691886964,
+    "selected": false
+  },
+  {
+    "run_id": "3cc60fc3fe104fe4af1bee4d48229dd1",
+    "run_name": "tfidf_logistic_regression",
+    "data_version": "jigsaw-minimal-v1",
+    "git_sha": "1fe86b49b85f242e7fd0635b888059c1389384df",
+    "validation_f1": 0.7728368017524644,
+    "test_f1": 0.7753226865018595,
+    "selected": false
+  },
+  {
+    "run_id": "def221719ed64c44a6949ebf9e8b5fb4",
+    "run_name": "tfidf_logreg_preprocess_standard",
+    "data_version": "jigsaw-standard-v2",
+    "git_sha": "1fe86b49b85f242e7fd0635b888059c1389384df",
+    "validation_f1": 0.7899798702751062,
+    "test_f1": 0.7878651685393259,
+    "selected": true
+  }
+]

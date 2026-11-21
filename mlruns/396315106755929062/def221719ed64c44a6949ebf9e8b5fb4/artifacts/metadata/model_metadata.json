@@ -1,0 +1,19 @@
+{
+  "model_name": "tfidf_logreg_preprocess_standard",
+  "model_version": "toxicity-tfidf-logreg-v1.0.0",
+  "artifact_sha256": "3e98dd65c5f46c103585450f577657f8e7cde97eaa5117894225005112716b3d",
+  "data_version": "jigsaw-standard-v2",
+  "preprocessing": "standard",
+  "decision_threshold": 0.664350614731206,
+  "selection_metric": "validation_f1",
+  "validation_f1": 0.7899798702751062,
+  "test_f1": 0.7878651685393259,
+  "test_precision": 0.8130797773654916,
+  "test_recall": 0.7641673931996512,
+  "test_roc_auc": 0.9728975299651048,
+  "test_pr_auc": 0.8725905621703934,
+  "training_seed": 42,
+  "source_dataset_sha256": "bd4084611bd27c939ba98e5e63bc3e5a2c1a4e99477dcba46c829e4c986c429d",
+  "split_manifest_sha256": "32ce6541f1b0318c31f7b7d18e7f84da7bb7e52259a71d0fa9dc0430dc33a47e",
+  "fit_seconds": 17.435208207985852
+}

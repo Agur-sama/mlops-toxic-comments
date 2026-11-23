@@ -2,8 +2,8 @@
 
 ## Идентификаторы
 
-- Итоговый tag: `v1.0.0`.
-- Full commit SHA: источник истины — `git rev-parse 'v1.0.0^{commit}'` (фактическое значение также указывается при сдаче; SHA невозможно корректно включить в содержимое того же commit).
+- Итоговый tag: `v1.1.0`.
+- Full commit SHA: источник истины — `git rev-parse 'v1.1.0^{commit}'` (фактическое значение также указывается при сдаче; SHA невозможно корректно включить в содержимое того же commit).
 - Model version: `toxicity-tfidf-logreg-v1.0.0`.
 - Model SHA-256: `3e98dd65c5f46c103585450f577657f8e7cde97eaa5117894225005112716b3d`.
 - Selected MLflow run: `def221719ed64c44a6949ebf9e8b5fb4`.
@@ -58,7 +58,8 @@ Streamlit UI запускается в отдельном non-root image, обр
 - `dvc repro prepare_split data_v1 data_v2 experiments` — passed;
 - model checksum и runtime prediction — passed;
 - локальный API smoke (`/health`, valid `/predict`, invalid `422`) — passed;
-- Docker daemon — доступен; локальная сборка остановлена из-за зависшей загрузки metadata базового image из Docker Hub, поэтому обязательный container smoke остаётся quality gate в CI.
+- чистая Docker-сборка API и UI с hash-locked dependencies — passed;
+- `docker compose up --detach --wait`, healthchecks обоих контейнеров, связь UI→API и browser UI prediction — passed.
 
 ## Финальный чек-лист
 

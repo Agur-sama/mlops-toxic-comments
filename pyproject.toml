@@ -33,6 +33,8 @@ train = [
 ui = [
   "requests==2.32.3",
   "streamlit==1.41.1",
+  # Explicit for a macOS-generated lock installed inside Linux Docker.
+  "watchdog==6.0.0",
 ]
 dev = [
   "httpx==0.28.1",

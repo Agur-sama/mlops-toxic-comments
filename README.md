@@ -9,15 +9,19 @@
 Нужен Docker Engine с Compose v2. Одна команда собирает и запускает API и UI:
 
 ```bash
-docker compose up --build -d
+docker compose up --build --detach --wait --wait-timeout 120
 ```
 
 После готовности доступны <http://localhost:8000/health>, <http://localhost:8000/docs>, <http://localhost:8000/metrics> и Streamlit UI <http://localhost:8501>.
 
 ```bash
 sh scripts/smoke_test.sh http://localhost:8000
-docker compose down
+curl --fail http://localhost:8501/_stcore/health
 ```
+
+Команда запуска завершается успешно только после того, как оба контейнера стали
+`healthy`. Оставьте их запущенными для демонстрации; остановка выполняется
+командой `docker compose down`.
 
 ## Окружение и lock-файлы
 
@@ -130,6 +134,19 @@ docker stop toxicity-api
 ```
 
 `Dockerfile` использует фиксированный `python:3.12.7-slim-bookworm`, ставит пакеты с `--require-hashes`, проверяет health и запускается от UID `10001`, не root. Compose включает read-only filesystem, `no-new-privileges` и dropped capabilities.
+
+### Если `localhost:8501` не открывается
+
+```bash
+docker compose ps
+docker compose logs --no-color --tail=100 api ui
+docker compose up --build --detach --wait --wait-timeout 120
+```
+
+В `docker compose ps` должны присутствовать `nlp-api-1` и `nlp-ui-1` со
+статусом `healthy`. Если список пуст, стек не запущен. Не запускайте старые
+контейнеры из Docker Desktop: проект поднимается из корня репозитория командой
+Compose выше.
 
 ## Конфигурация и секреты
 

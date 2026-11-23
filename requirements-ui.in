@@ -1,2 +1,6 @@
 requests==2.32.3
 streamlit==1.41.1
+# Streamlit marks watchdog as platform-specific.  The lock file is generated on
+# macOS but installed in a Linux container, so keep the Linux dependency
+# explicit to make --require-hashes portable across both platforms.
+watchdog==6.0.0

@@ -2,18 +2,18 @@
 
 ## Идентификаторы
 
-- Итоговый tag: `v1.1.0`.
-- Full commit SHA: источник истины — `git rev-parse 'v1.1.0^{commit}'` (фактическое значение также указывается при сдаче; SHA невозможно корректно включить в содержимое того же commit).
+- Итоговый tag: `v1.2.0`.
+- Full commit SHA: источник истины — `git rev-parse 'v1.2.0^{commit}'` (фактическое значение также указывается при сдаче; SHA невозможно корректно включить в содержимое того же commit).
 - Model version: `toxicity-tfidf-logreg-v1.0.0`.
 - Model SHA-256: `3e98dd65c5f46c103585450f577657f8e7cde97eaa5117894225005112716b3d`.
 - Selected MLflow run: `def221719ed64c44a6949ebf9e8b5fb4`.
 - Data version: `jigsaw-standard-v2`.
 - Data content ID: `9358cad3ec371c8a7e098dfb7e73a9f6a1990d2c8c31bb8f6519cea6380926a3`.
-- Repository URL: `REPLACE_AFTER_PUSH`.
-- Successful CI URL: `REPLACE_AFTER_FIRST_GITHUB_ACTIONS_RUN`.
-- Demo video URL: `REPLACE_AFTER_RECORDING`.
-
-После push нужно заменить только внешние URL. Локальные tag/run/data/model identifiers уже зафиксированы.
+- Repository URL: <https://github.com/Agur-sama/mlops-toxic-comments>.
+- Pull Request: <https://github.com/Agur-sama/mlops-toxic-comments/pull/1>.
+- CI workflow: <https://github.com/Agur-sama/mlops-toxic-comments/actions/workflows/ci.yml>.
+- Demo video: не записано; проверенный сценарий находится в
+  `docs/demo-script.md`. Не следует указывать вымышленную ссылку.
 
 ## Обязательная часть, 80 баллов
 
@@ -49,7 +49,10 @@ GitHub Actions включает lint, tests, 80% coverage gate, JUnit/coverage a
 
 ### Пользовательский интерфейс
 
-Streamlit UI запускается в отдельном non-root image, обращается к `/predict` по HTTP, не имеет своей модели, показывает probability и versions, понятно обрабатывает 4xx/network errors. Compose ждёт API health до старта UI.
+Streamlit UI запускается в отдельном non-root image, обращается к `/predict` по
+HTTP, не имеет своей модели, показывает probability, data version и latency,
+понятно обрабатывает 4xx/network errors. Model version доступна через API, но
+скрыта из пользовательского интерфейса. Compose ждёт API health до старта UI.
 
 ## Проверено локально
 
@@ -63,8 +66,8 @@ Streamlit UI запускается в отдельном non-root image, обр
 
 ## Финальный чек-лист
 
-- [ ] Заменить внешние `REPLACE_*` после push, CI и записи видео.
-- [ ] Убедиться, что GitHub Actions зелёный на этом SHA.
+- [x] Добавить действительные URL репозитория, PR и workflow.
+- [ ] Убедиться, что GitHub Actions зелёный на итоговом tag SHA.
 - [ ] Проверить ссылки без авторской сессии.
 - [ ] Записать 1–3 минутное видео по `docs/demo-script.md`.
 - [ ] Проверить `git status --short` — вывод пуст.

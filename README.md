@@ -125,15 +125,18 @@ curl -sS -X POST http://localhost:8000/predict \
 
 ```bash
 docker build \
-  --build-arg APP_VERSION=1.0.0 \
+  --build-arg APP_VERSION=1.2.0 \
   --build-arg VCS_REF="$(git rev-parse HEAD)" \
-  -t toxic-comment-api:1.0.0 .
-docker run --rm -d --name toxicity-api -p 8000:8000 toxic-comment-api:1.0.0
+  -t toxic-comment-api:1.2.0 .
+docker run --rm -d --name toxicity-api -p 8000:8000 toxic-comment-api:1.2.0
 sh scripts/smoke_test.sh http://localhost:8000
 docker stop toxicity-api
 ```
 
-`Dockerfile` использует фиксированный `python:3.12.7-slim-bookworm`, ставит пакеты с `--require-hashes`, проверяет health и запускается от UID `10001`, не root. Compose включает read-only filesystem, `no-new-privileges` и dropped capabilities.
+`Dockerfile` использует `python:3.12.7-slim-bookworm`, закреплённый по
+manifest digest, ставит пакеты с `--require-hashes`, проверяет health и
+запускается от UID `10001`, не root. Compose включает read-only filesystem,
+`no-new-privileges` и dropped capabilities.
 
 ### Если `localhost:8501` не открывается
 
@@ -143,8 +146,9 @@ docker compose logs --no-color --tail=100 api ui
 docker compose up --build --detach --wait --wait-timeout 120
 ```
 
-В `docker compose ps` должны присутствовать `nlp-api-1` и `nlp-ui-1` со
-статусом `healthy`. Если список пуст, стек не запущен. Не запускайте старые
+В `docker compose ps` должны присутствовать сервисы `api` и `ui` со статусом
+`healthy` (точный префикс имён зависит от имени каталога). Если список пуст,
+стек не запущен. Не запускайте старые
 контейнеры из Docker Desktop: проект поднимается из корня репозитория командой
 Compose выше.
 
@@ -156,9 +160,15 @@ Compose выше.
 
 ## CI и bonus UI
 
-`.github/workflows/ci.yml` запускается для pull request, `main` и `v*` tag. Pipeline выполняет locked install, ruff, pytest с coverage gate 80%, публикует JUnit/coverage artifacts, после quality собирает SHA-tagged image, делает container smoke с cleanup, а для version tag публикует tag+SHA images в GHCR. `concurrency` исключает дубли для одного PR/ref.
+`.github/workflows/ci.yml` запускается для pull request, `main` и `v*` tag.
+Pipeline выполняет locked install, ruff, pytest с coverage gate 80%, публикует
+JUnit/coverage artifacts, после quality собирает оба Compose image и делает
+полный container smoke с cleanup. Для version tag API и UI публикуются в GHCR
+с tag и SHA. `concurrency` исключает дубли для одного PR/ref.
 
-Streamlit UI из `ui/app.py` обращается только к HTTP API, показывает версию модели/данных и понятно обрабатывает errors.
+Streamlit UI из `ui/app.py` обращается только к HTTP API, показывает результат,
+версию данных и понятно обрабатывает errors. Техническая версия модели остаётся
+доступна в ответах `/health` и `/predict`, но не перегружает пользовательский UI.
 
 ## Структура
 
@@ -183,6 +193,11 @@ DATASET_CARD.md             source, split, versions and limitations
 REPORT.md                   rubric evidence and final checklist
 ```
 
-Схемы есть в [docs/architecture.md](docs/architecture.md), карта соответствия рубрике — в [REPORT.md](REPORT.md), сценарий демо — в [docs/demo-script.md](docs/demo-script.md).
+Схемы есть в [docs/architecture.md](docs/architecture.md), карта соответствия
+рубрике — в [REPORT.md](REPORT.md), сценарий короткого видео — в
+[docs/demo-script.md](docs/demo-script.md), а подробный комплект для защиты —
+в каталоге `DEFENSE_MLOPS/`.
 
-Перед сдачей нужно добавить в `REPORT.md` внешние URL репозитория, успешного GitHub Actions pipeline и демо-видео: локальный проект не может корректно изобразить эти ссылки.
+Важно: release проекта имеет tag `v1.2.0`, а неизменившийся ML artifact —
+model version `toxicity-tfidf-logreg-v1.0.0`. Это разные уровни версионирования,
+и совпадать они не обязаны.

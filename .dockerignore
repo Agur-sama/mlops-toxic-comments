@@ -16,6 +16,11 @@ mlruns
 notebooks
 report
 results
+DEFENSE_MLOPS
+AUDIT_MLOPS.md
+REPORT.md
+submission
+submission_packages
 tests
 artifacts/figures
 artifacts/predictions

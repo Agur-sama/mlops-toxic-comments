@@ -3,7 +3,7 @@
 ## Подготовка
 
 ```bash
-git checkout v1.2.0
+git checkout v1.2.1
 docker compose down --remove-orphans
 ```
 

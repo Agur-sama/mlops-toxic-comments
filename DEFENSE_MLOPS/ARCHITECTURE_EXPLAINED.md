@@ -37,7 +37,7 @@ training-serving skew.
 
 ## Registry и tags
 
-Git tag `v1.2.0` неизменяемо обозначает проверенный release исходников. На tag
+Git tag `v1.2.1` неизменяемо обозначает проверенный release исходников. На tag
 CI дополнительно публикует два image в GitHub Container Registry (GHCR): API и
 UI с version tag и полным commit SHA. Версия release и версия model artifact
-разделены: код — `v1.2.0`, модель — `toxicity-tfidf-logreg-v1.0.0`.
+разделены: код — `v1.2.1`, модель — `toxicity-tfidf-logreg-v1.0.0`.

@@ -6,7 +6,7 @@
 - основная ветка: `main`;
 - рабочая ветка финального аудита: `codex/mlops-final-audit`;
 - Pull Request: <https://github.com/Agur-sama/mlops-toxic-comments/pull/1>;
-- итоговый tag после merge: `v1.2.0`.
+- итоговый tag после hotfix merge: `v1.2.1`.
 
 ## Важные исходные коммиты
 
@@ -29,8 +29,8 @@ PR №1. Лабораторная история `mlops_submission/` в новы
 
 ```bash
 git fetch --tags origin
-git rev-parse 'v1.2.0^{commit}'
-git show --no-patch --decorate v1.2.0
+git rev-parse 'v1.2.1^{commit}'
+git show --no-patch --decorate v1.2.1
 ```
 
 SHA самого release commit нельзя корректно записать внутрь содержимого того же
@@ -46,5 +46,5 @@ commit: изменение строки изменит SHA. Поэтому autho
   <https://github.com/Agur-sama/mlops-toxic-comments/actions/runs/45493243912> —
   `quality` и `image` завершены успешно, `publish` пропущен по условию tag-only.
 
-На защите откройте run для `v1.2.0`: он должен содержать успешные jobs
+На защите откройте run для `v1.2.1`: он должен содержать успешные jobs
 `quality`, `image`, `publish` и публикацию API+UI в GHCR.

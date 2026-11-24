@@ -4,9 +4,9 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        APP_VERSION: ${APP_VERSION:-1.2.0}
+        APP_VERSION: ${APP_VERSION:-1.2.1}
         VCS_REF: ${VCS_REF:-local}
-    image: toxic-comment-api:${APP_VERSION:-1.2.0}
+    image: toxic-comment-api:${APP_VERSION:-1.2.1}
     ports:
       - "8000:8000"
     read_only: true
@@ -23,9 +23,9 @@ services:
       context: .
       dockerfile: Dockerfile.ui
       args:
-        APP_VERSION: ${APP_VERSION:-1.2.0}
+        APP_VERSION: ${APP_VERSION:-1.2.1}
         VCS_REF: ${VCS_REF:-local}
-    image: toxic-comment-ui:${APP_VERSION:-1.2.0}
+    image: toxic-comment-ui:${APP_VERSION:-1.2.1}
     environment:
       API_BASE_URL: http://api:8000
     ports:

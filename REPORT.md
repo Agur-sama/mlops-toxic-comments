@@ -2,8 +2,8 @@
 
 ## Идентификаторы
 
-- Итоговый tag: `v1.2.0`.
-- Full commit SHA: источник истины — `git rev-parse 'v1.2.0^{commit}'` (фактическое значение также указывается при сдаче; SHA невозможно корректно включить в содержимое того же commit).
+- Итоговый tag: `v1.2.1`.
+- Full commit SHA: источник истины — `git rev-parse 'v1.2.1^{commit}'` (фактическое значение также указывается при сдаче; SHA невозможно корректно включить в содержимое того же commit).
 - Model version: `toxicity-tfidf-logreg-v1.0.0`.
 - Model SHA-256: `3e98dd65c5f46c103585450f577657f8e7cde97eaa5117894225005112716b3d`.
 - Selected MLflow run: `def221719ed64c44a6949ebf9e8b5fb4`.

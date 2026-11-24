@@ -11,17 +11,17 @@
 - Checks PR: <https://github.com/Agur-sama/mlops-toxic-comments/pull/1/checks>.
 - Успешный PR workflow run №3:
   <https://github.com/Agur-sama/mlops-toxic-comments/actions/runs/45493243912>.
-- Итоговый tag: `v1.2.0`; страница release-кода:
-  <https://github.com/Agur-sama/mlops-toxic-comments/tree/v1.2.0>.
+- Итоговый tag: `v1.2.1`; страница release-кода:
+  <https://github.com/Agur-sama/mlops-toxic-comments/tree/v1.2.1>.
 - Full commit SHA: получить командой
-  `git rev-parse 'v1.2.0^{commit}'`; фактическое значение приводится вместе со
+  `git rev-parse 'v1.2.1^{commit}'`; фактическое значение приводится вместе со
   ссылкой на успешный tag workflow при сдаче.
 
 ## Docker
 
-- локальные images: `toxic-comment-api:1.2.0`, `toxic-comment-ui:1.2.0`;
-- GHCR API: `ghcr.io/agur-sama/mlops-toxic-comments/toxic-comment-api:v1.2.0`;
-- GHCR UI: `ghcr.io/agur-sama/mlops-toxic-comments/toxic-comment-ui:v1.2.0`.
+- локальные images: `toxic-comment-api:1.2.1`, `toxic-comment-ui:1.2.1`;
+- GHCR API: `ghcr.io/agur-sama/mlops-toxic-comments/toxic-comment-api:v1.2.1`;
+- GHCR UI: `ghcr.io/agur-sama/mlops-toxic-comments/toxic-comment-ui:v1.2.1`.
 
 ```bash
 docker compose up --build --detach --wait --wait-timeout 120

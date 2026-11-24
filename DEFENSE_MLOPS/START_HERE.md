@@ -13,7 +13,7 @@
 В терминале из корня проекта:
 
 ```bash
-git checkout v1.2.0
+git checkout v1.2.1
 docker compose up --build --detach --wait --wait-timeout 120
 docker compose ps
 ```
@@ -61,7 +61,7 @@ dvc status
 ## Что показать преподавателю
 
 1. GitHub: адрес находится в `LINKS_AND_RESULTS.md`.
-2. Tag `v1.2.0` и полный SHA: `git show --no-patch v1.2.0`.
+2. Tag `v1.2.1` и полный SHA: `git show --no-patch v1.2.1`.
 3. Зелёный GitHub Actions workflow по ссылке из `LINKS_AND_RESULTS.md`.
 4. Три MLflow run и выбранный лучший run.
 5. `dvc dag`, два manifest в `data/versions/` и их content ID.

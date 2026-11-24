@@ -7,15 +7,18 @@
 - Основная ветка: <https://github.com/Agur-sama/mlops-toxic-comments/tree/main>.
 - Pull Request №1: <https://github.com/Agur-sama/mlops-toxic-comments/pull/1> —
   история аудита, diff и проверки.
+- Pull Request №2: <https://github.com/Agur-sama/mlops-toxic-comments/pull/2> —
+  исправление lowercase namespace GHCR без переписывания истории.
 - GitHub Actions: <https://github.com/Agur-sama/mlops-toxic-comments/actions/workflows/ci.yml>.
 - Checks PR: <https://github.com/Agur-sama/mlops-toxic-comments/pull/1/checks>.
 - Успешный PR workflow run №3:
   <https://github.com/Agur-sama/mlops-toxic-comments/actions/runs/45493243912>.
+- Успешный release workflow run №9:
+  <https://github.com/Agur-sama/mlops-toxic-comments/actions/runs/45495465408>
+  (`quality`, `image`, `publish` — success).
 - Итоговый tag: `v1.2.1`; страница release-кода:
   <https://github.com/Agur-sama/mlops-toxic-comments/tree/v1.2.1>.
-- Full commit SHA: получить командой
-  `git rev-parse 'v1.2.1^{commit}'`; фактическое значение приводится вместе со
-  ссылкой на успешный tag workflow при сдаче.
+- Full release commit SHA: `0f3646657d7225b7e41449f8e3f2bc66daf28f55`.
 
 ## Docker
 
@@ -87,6 +90,15 @@ dvc repro
   Streamlit→FastAPI, non-root и read-only checks прошли локально.
 - GitHub Actions подтвердил locked install, Ruff, pytest/coverage, сборку обоих
   images и полный Compose smoke на Ubuntu.
+- Clean clone tag `v1.2.1` подтвердил те же 13 тестов/90,82%, no-cache build,
+  API/UI/security smoke и browser prediction. Полный data download требует
+  личной Kaggle-аутентификации; model artifact уже включён в release.
 
 Демо-видео не считается готовым до личной записи. Проверенный сценарий и
 инструкция QuickTime находятся в `docs/demo-script.md` и `DEFENSE_MLOPS/DEMO.md`.
+
+Локальный архив для независимой проверки:
+`submission/mlops-toxic-comments-v1.2.1.zip`; SHA-256
+`9e289ab4928d938bef1d7eb670a2674eca883c2ce9dc8bd7cf8b1f7074cf5cbb`.
+Архив создан через `git archive v1.2.1`, проверен `unzip -t` и не содержит
+секретов, dataset CSV, virtualenv, caches или `mlops_submission/`.

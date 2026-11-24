@@ -13,15 +13,15 @@
 
 | Требование | Максимальные баллы | Реализовано | Проверено реальным запуском | Что необходимо исправить |
 |---|---:|---|---|---|
-| Git и воспроизводимое окружение | 10 | Да, кроме итогового tag/clean clone | Репозиторий и PR №1 опубликованы, история сохранена | После hotfix merge создать `v1.2.1` и проверить чистый клон |
-| Docker | 15 | Да | API+UI собраны без кэша; health, predict, 422, Swagger, non-root и read-only проверены | Повторить из чистого клона tag |
-| Данные и эксперименты | 15 | Да | DVC up to date; 3 MLflow runs, 2 data versions и совпадение model artifact подтверждены | Повторить доступные проверки из чистого клона |
-| Инференс-сервис и тесты | 15 | Да | Локально 13 passed/90,82%; GitHub Actions `quality` и container smoke успешны | Повторить на итоговом tag |
-| Конфигурация и секреты | 10 | Да | Portable paths, env template, secret scan, fail-fast tests и минимальные CI permissions проверены | Проверить финальный archive |
-| Документация | 10 | Да | README, cards, report, схемы, demo и 8 файлов `DEFENSE_MLOPS` сверены | Добавить tag run и полный SHA в итоговую выдачу |
-| Материалы для сдачи | 5 | Частично | Ссылки и сценарии готовы | Создать ZIP; студенту записать видео 1–3 минуты |
-| GitHub Actions (бонус) | 10 | Да для PR | Run №3: `quality` и `image` успешны | Подтвердить `publish` на tag |
-| Streamlit UI (бонус) | 10 | Да | Browser test Streamlit → FastAPI → model успешен; error handling есть | Повторить из чистого клона |
+| Git и воспроизводимое окружение | 10 | Да | Публичный repo, 2 merged PR, annotated `v1.2.1`, clean clone и locked install подтверждены | Нет |
+| Docker | 15 | Да | No-cache API+UI build, health, predict, 422, Swagger, non-root/read-only и clean-clone run подтверждены | Нет |
+| Данные и эксперименты | 15 | Да | DVC up to date; 3 MLflow runs, 2 data versions, checksums и совпадение model artifact подтверждены | Для нового скачивания нужен личный Kaggle login |
+| Инференс-сервис и тесты | 15 | Да | Clean clone: 13 passed, coverage 90,82%; tag CI и container smoke успешны | Нет |
+| Конфигурация и секреты | 10 | Да | Portable paths, env template, secret scan, fail-fast tests, minimal CI permissions и archive scope проверены | Нет |
+| Документация | 10 | Да | README, cards, report, схемы, demo и 8 файлов `DEFENSE_MLOPS` сверены | Нет |
+| Материалы для сдачи | 5 | 3 из 5 | Ссылки, результаты, сценарии и проверенный ZIP готовы | Студенту записать видео 1–3 минуты |
+| GitHub Actions (бонус) | 10 | Да | Release run №9: `quality`, `image`, `publish` успешны; API+UI опубликованы в GHCR | Нет |
+| Streamlit UI (бонус) | 10 | Да | Browser test из clean clone: Streamlit → FastAPI → model успешен; error handling есть | Нет |
 
 ## Обнаруженные недостатки
 
@@ -55,7 +55,8 @@
 - зафиксированы три MLflow run и две версии preprocessing/data manifests;
 - модель в `artifacts/models/` побайтово совпадает с artifact выбранного run.
 
-Эти значения будут повторно проверены на финальном опубликованном commit.
+Эти значения повторно проверены на опубликованном release commit
+`0f3646657d7225b7e41449f8e3f2bc66daf28f55`.
 
 ## Подтверждение облачного CI
 
@@ -67,6 +68,33 @@ Jobs `quality` и `image` завершены со статусом success. Вн
 locked install, Ruff, pytest/coverage gate, upload reports, сборка API+UI и
 полный smoke Compose stack. Job `publish` корректно пропущен, потому что PR не
 является version tag.
+
+Итоговый tag workflow run №9:
+<https://github.com/Agur-sama/mlops-toxic-comments/actions/runs/45495465408>.
+Jobs `quality`, `image` и `publish` завершены успешно. API и UI images
+опубликованы в GHCR с tag `v1.2.1` и полным commit SHA.
+
+## Проверка из чистого клона
+
+Tag `v1.2.1` клонирован в отдельный `/tmp`-каталог. Подтверждены detached HEAD
+`0f3646657d7225b7e41449f8e3f2bc66daf28f55`, hash-locked установка, Ruff,
+13 тестов, coverage 90,82%, `pip check`, no-cache build обоих Docker images,
+Compose health, `/health`, valid/invalid `/predict`, Swagger, non-root,
+read-only filesystem, UI→API и browser prediction.
+
+KaggleHub download корректно потребовал личную аутентификацию. Это ожидаемое
+внешнее ограничение Jigsaw: новый пользователь должен выполнить
+`kagglehub login` и принять правила соревнования. Без raw CSV успешно проверены
+`dvc repro experiments` и `dvc dag`; полный `dvc repro` ранее подтверждён в
+исходном изолированном окружении.
+
+## Подтверждённая оценка
+
+- обязательная часть: 78/80 до записи видео, 80/80 после добавления видео;
+- GitHub Actions: 10/10;
+- Streamlit UI: 10/10;
+- подтверждено сейчас: 98/100;
+- возможный итог после личной записи видео: 100/100.
 
 ## План исправлений и проверки
 

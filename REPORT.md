@@ -3,7 +3,7 @@
 ## Идентификаторы
 
 - Итоговый tag: `v1.2.1`.
-- Full commit SHA: источник истины — `git rev-parse 'v1.2.1^{commit}'` (фактическое значение также указывается при сдаче; SHA невозможно корректно включить в содержимое того же commit).
+- Full release commit SHA: `0f3646657d7225b7e41449f8e3f2bc66daf28f55`.
 - Model version: `toxicity-tfidf-logreg-v1.0.0`.
 - Model SHA-256: `3e98dd65c5f46c103585450f577657f8e7cde97eaa5117894225005112716b3d`.
 - Selected MLflow run: `def221719ed64c44a6949ebf9e8b5fb4`.
@@ -11,11 +11,16 @@
 - Data content ID: `9358cad3ec371c8a7e098dfb7e73a9f6a1990d2c8c31bb8f6519cea6380926a3`.
 - Repository URL: <https://github.com/Agur-sama/mlops-toxic-comments>.
 - Pull Request: <https://github.com/Agur-sama/mlops-toxic-comments/pull/1>.
+- GHCR hotfix Pull Request: <https://github.com/Agur-sama/mlops-toxic-comments/pull/2>.
 - CI workflow: <https://github.com/Agur-sama/mlops-toxic-comments/actions/workflows/ci.yml>.
 - Successful PR CI: <https://github.com/Agur-sama/mlops-toxic-comments/actions/runs/45493243912>
   (`quality` и `image` успешно; `publish` ожидаемо пропущен для PR).
+- Successful release CI: <https://github.com/Agur-sama/mlops-toxic-comments/actions/runs/45495465408>
+  (`quality`, `image` и `publish` успешно; API и UI отправлены в GHCR).
 - Demo video: не записано; проверенный сценарий находится в
   `docs/demo-script.md`. Не следует указывать вымышленную ссылку.
+- Submission ZIP: `submission/mlops-toxic-comments-v1.2.1.zip`, SHA-256
+  `9e289ab4928d938bef1d7eb670a2674eca883c2ce9dc8bd7cf8b1f7074cf5cbb`.
 
 ## Обязательная часть, 80 баллов
 
@@ -65,12 +70,18 @@ HTTP, не имеет своей модели, показывает probability,
 - локальный API smoke (`/health`, valid `/predict`, invalid `422`) — passed;
 - чистая Docker-сборка API и UI с hash-locked dependencies — passed;
 - `docker compose up --detach --wait`, healthchecks обоих контейнеров, связь UI→API и browser UI prediction — passed.
+- отдельный чистый clone tag `v1.2.1`: locked install, 13 тестов,
+  coverage 90,82%, no-cache Docker build, API/UI/security smoke и browser
+  prediction — passed;
+- получение исходного Jigsaw CSV в чистом clone требует личной Kaggle
+  аутентификации и принятия правил соревнования; `dvc repro experiments` и
+  `dvc dag` без raw CSV проверены.
 
 ## Финальный чек-лист
 
 - [x] Добавить действительные URL репозитория, PR и workflow.
 - [x] Проверить зелёный GitHub Actions для PR commit.
-- [ ] Проверить зелёный GitHub Actions и публикацию GHCR на итоговом tag SHA.
-- [ ] Проверить ссылки без авторской сессии.
+- [x] Проверить зелёный GitHub Actions и публикацию GHCR на итоговом tag SHA.
+- [x] Проверить публичные ссылки репозитория, PR, tag и workflow.
 - [ ] Записать 1–3 минутное видео по `docs/demo-script.md`.
-- [ ] Проверить `git status --short` — вывод пуст.
+- [x] Проверить `git status --short` — вывод пуст для release checkout.

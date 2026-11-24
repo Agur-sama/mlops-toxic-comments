@@ -125,10 +125,10 @@ curl -sS -X POST http://localhost:8000/predict \
 
 ```bash
 docker build \
-  --build-arg APP_VERSION=1.2.0 \
+  --build-arg APP_VERSION=1.2.1 \
   --build-arg VCS_REF="$(git rev-parse HEAD)" \
-  -t toxic-comment-api:1.2.0 .
-docker run --rm -d --name toxicity-api -p 8000:8000 toxic-comment-api:1.2.0
+  -t toxic-comment-api:1.2.1 .
+docker run --rm -d --name toxicity-api -p 8000:8000 toxic-comment-api:1.2.1
 sh scripts/smoke_test.sh http://localhost:8000
 docker stop toxicity-api
 ```
@@ -198,6 +198,6 @@ REPORT.md                   rubric evidence and final checklist
 [docs/demo-script.md](docs/demo-script.md), а подробный комплект для защиты —
 в каталоге `DEFENSE_MLOPS/`.
 
-Важно: release проекта имеет tag `v1.2.0`, а неизменившийся ML artifact —
+Важно: release проекта имеет tag `v1.2.1`, а неизменившийся ML artifact —
 model version `toxicity-tfidf-logreg-v1.0.0`. Это разные уровни версионирования,
 и совпадать они не обязаны.

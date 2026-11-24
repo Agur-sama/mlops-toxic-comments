@@ -87,8 +87,8 @@ jobs:
           file: Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}/toxic-comment-api:${{ github.ref_name }}
-            ghcr.io/${{ github.repository }}/toxic-comment-api:${{ github.sha }}
+            ghcr.io/agur-sama/mlops-toxic-comments/toxic-comment-api:${{ github.ref_name }}
+            ghcr.io/agur-sama/mlops-toxic-comments/toxic-comment-api:${{ github.sha }}
           build-args: |
             APP_VERSION=${{ github.ref_name }}
             VCS_REF=${{ github.sha }}
@@ -99,8 +99,8 @@ jobs:
           file: Dockerfile.ui
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}/toxic-comment-ui:${{ github.ref_name }}
-            ghcr.io/${{ github.repository }}/toxic-comment-ui:${{ github.sha }}
+            ghcr.io/agur-sama/mlops-toxic-comments/toxic-comment-ui:${{ github.ref_name }}
+            ghcr.io/agur-sama/mlops-toxic-comments/toxic-comment-ui:${{ github.sha }}
           build-args: |
             APP_VERSION=${{ github.ref_name }}
             VCS_REF=${{ github.sha }}

@@ -61,10 +61,10 @@
     чистой Ubuntu-среде по commit, поэтому обнаруживает скрытые зависимости от Mac.
 23. **Что проверяет workflow?** Ruff, pytest, coverage gate 80%, reports,
     сборку API+UI, health/predict/UI smoke, UI→API и публикацию на version tag.
-24. **Зачем Git tag?** `v1.2.0` неизменяемо связывает исходники, lock-файлы,
+24. **Зачем Git tag?** `v1.2.1` неизменяемо связывает исходники, lock-файлы,
     Dockerfiles, config и модель одного release.
 25. **Почему version проекта и модели разные?** Модель не переобучалась после
-    исправлений инфраструктуры. Release `v1.2.0` содержит прежний проверенный
+    исправлений инфраструктуры. Release `v1.2.1` содержит прежний проверенный
     artifact `toxicity-tfidf-logreg-v1.0.0`.
 26. **Как воспроизвести обучение?** Получить Jigsaw по README, установить
     `requirements-train.lock`, выполнить `dvc repro` или соответствующие stages.

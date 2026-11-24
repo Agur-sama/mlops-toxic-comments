@@ -3,7 +3,7 @@
 ## Подготовка до начала
 
 ```bash
-git checkout v1.2.0
+git checkout v1.2.1
 docker compose up --build --detach --wait --wait-timeout 120
 ```
 
@@ -29,7 +29,7 @@ git rev-parse HEAD
 git log --oneline --decorate -8
 ```
 
-Должен появиться tag `v1.2.0`. Откройте Pull Request и зелёный Actions workflow
+Должен появиться tag `v1.2.1`. Откройте Pull Request и зелёный Actions workflow
 по ссылкам из `LINKS_AND_RESULTS.md`. Покажите четыре lock-файла.
 
 ## 3:00–5:00 — данные, DVC и MLflow

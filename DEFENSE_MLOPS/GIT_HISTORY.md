@@ -42,6 +42,9 @@ commit: изменение строки изменит SHA. Поэтому autho
 
 - workflow: <https://github.com/Agur-sama/mlops-toxic-comments/actions/workflows/ci.yml>;
 - PR checks: <https://github.com/Agur-sama/mlops-toxic-comments/pull/1/checks>.
+- подтверждённый PR run №3:
+  <https://github.com/Agur-sama/mlops-toxic-comments/actions/runs/45493243912> —
+  `quality` и `image` завершены успешно, `publish` пропущен по условию tag-only.
 
 На защите откройте run для `v1.2.0`: он должен содержать успешные jobs
 `quality`, `image`, `publish` и публикацию API+UI в GHCR.

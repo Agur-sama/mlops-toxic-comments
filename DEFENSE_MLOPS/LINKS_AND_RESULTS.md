@@ -9,6 +9,8 @@
   история аудита, diff и проверки.
 - GitHub Actions: <https://github.com/Agur-sama/mlops-toxic-comments/actions/workflows/ci.yml>.
 - Checks PR: <https://github.com/Agur-sama/mlops-toxic-comments/pull/1/checks>.
+- Успешный PR workflow run №3:
+  <https://github.com/Agur-sama/mlops-toxic-comments/actions/runs/45493243912>.
 - Итоговый tag: `v1.2.0`; страница release-кода:
   <https://github.com/Agur-sama/mlops-toxic-comments/tree/v1.2.0>.
 - Full commit SHA: получить командой
@@ -83,6 +85,8 @@ dvc repro
 - required coverage gate `80%`;
 - Ruff, pytest, DVC, no-cache Docker build, API/UI health, 422, browser
   Streamlit→FastAPI, non-root и read-only checks прошли локально.
+- GitHub Actions подтвердил locked install, Ruff, pytest/coverage, сборку обоих
+  images и полный Compose smoke на Ubuntu.
 
 Демо-видео не считается готовым до личной записи. Проверенный сценарий и
 инструкция QuickTime находятся в `docs/demo-script.md` и `DEFENSE_MLOPS/DEMO.md`.

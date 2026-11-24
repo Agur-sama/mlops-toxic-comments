@@ -12,6 +12,8 @@
 - Repository URL: <https://github.com/Agur-sama/mlops-toxic-comments>.
 - Pull Request: <https://github.com/Agur-sama/mlops-toxic-comments/pull/1>.
 - CI workflow: <https://github.com/Agur-sama/mlops-toxic-comments/actions/workflows/ci.yml>.
+- Successful PR CI: <https://github.com/Agur-sama/mlops-toxic-comments/actions/runs/45493243912>
+  (`quality` и `image` успешно; `publish` ожидаемо пропущен для PR).
 - Demo video: не записано; проверенный сценарий находится в
   `docs/demo-script.md`. Не следует указывать вымышленную ссылку.
 
@@ -67,7 +69,8 @@ HTTP, не имеет своей модели, показывает probability,
 ## Финальный чек-лист
 
 - [x] Добавить действительные URL репозитория, PR и workflow.
-- [ ] Убедиться, что GitHub Actions зелёный на итоговом tag SHA.
+- [x] Проверить зелёный GitHub Actions для PR commit.
+- [ ] Проверить зелёный GitHub Actions и публикацию GHCR на итоговом tag SHA.
 - [ ] Проверить ссылки без авторской сессии.
 - [ ] Записать 1–3 минутное видео по `docs/demo-script.md`.
 - [ ] Проверить `git status --short` — вывод пуст.

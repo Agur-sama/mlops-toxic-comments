@@ -1,5 +1,5 @@
 {
-  "source_path": "/Users/maksim/Documents/ChatGPT/курсовая по nlp/data/raw/jigsaw-toxic-comment-classification-challenge/train.csv",
+  "source_path": "data/raw/jigsaw-toxic-comment-classification-challenge/train.csv",
   "source_size_bytes": 68802655,
   "rows": 159571,
   "columns": 10,

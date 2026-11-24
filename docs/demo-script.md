@@ -3,7 +3,7 @@
 ## Подготовка
 
 ```bash
-git checkout v1.0.0
+git checkout v1.2.0
 docker compose down --remove-orphans
 ```
 
@@ -21,7 +21,7 @@ git rev-parse HEAD
 ## 0:20–0:55 — сборка и запуск
 
 ```bash
-docker compose up --build -d
+docker compose up --build --detach --wait --wait-timeout 120
 docker compose ps
 ```
 

@@ -33,11 +33,13 @@ flowchart LR
     Q --> L[Ruff]
     L --> T[Pytest + coverage >= 80%]
     T --> AR[JUnit + coverage artifacts]
-    T --> B[Docker build SHA tag]
-    B --> C[Run container]
-    C --> SM[Health + predict smoke]
+    T --> B[Build API + UI images]
+    B --> C[Run Compose stack]
+    C --> SM[API + UI + UI-to-API smoke]
     SM --> CL[Always cleanup]
-    SM -->|v* only| GHCR[Publish tag + SHA]
+    SM -->|v* only| GHCR[Publish API + UI: tag + SHA]
 ```
 
-Jobs `image` и `publish` зависят от successful `quality`. GitHub token выдаётся CI и не хранится в репозитории. `concurrency` привязан к PR number или ref, что исключает дубли.
+Jobs `image` и `publish` зависят от успешного `quality`. GitHub token выдаётся
+CI и не хранится в репозитории. `concurrency` привязан к PR number или ref, что
+исключает дубли.

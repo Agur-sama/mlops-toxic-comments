@@ -7,9 +7,8 @@ import streamlit as st
 
 API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000").rstrip("/")
 
-st.set_page_config(page_title="Toxicity Classifier", page_icon="🛡️", layout="centered")
-st.title("🛡️ Классификатор токсичных комментариев")
-st.caption("Интерфейс обращается к версионированному FastAPI, а не загружает модель сам.")
+st.set_page_config(page_title="Классификатор токсичных комментариев", layout="centered")
+st.title("Классификатор токсичных комментариев")
 
 text = st.text_area(
     "Англоязычный комментарий",
@@ -36,7 +35,6 @@ if st.button("Проверить", type="primary", use_container_width=True):
                 st.success(f"Нетоксичный комментарий: {1 - result['probability']:.1%}")
             st.progress(float(result["probability"]), text="Оценка токсичности")
             st.caption(
-                f"Модель: {result['model_version']} · "
                 f"Данные: {result['data_version']} · "
                 f"Задержка: {result['latency_ms']:.1f} мс"
             )

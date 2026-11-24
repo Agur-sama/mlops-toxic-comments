@@ -41,4 +41,12 @@ report/qa_*/
 /results/
 /toxic_comments_coursework.ipynb
 
+# Other coursework stored in the same local folder must never enter the
+# standalone MLOps coursework repository.
+/mlops_submission/
+/submission_packages/
+/DEFENSE/
+/FINAL_REPORT.md
+/submission/
+
 .ipynb_checkpoints/

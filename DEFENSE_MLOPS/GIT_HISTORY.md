@@ -6,6 +6,7 @@
 - основная ветка: `main`;
 - рабочая ветка финального аудита: `codex/mlops-final-audit`;
 - Pull Request: <https://github.com/Agur-sama/mlops-toxic-comments/pull/1>;
+- GHCR hotfix PR: <https://github.com/Agur-sama/mlops-toxic-comments/pull/2>;
 - итоговый tag после hotfix merge: `v1.2.1`.
 
 ## Важные исходные коммиты
@@ -20,6 +21,9 @@
 - `a92efb8` — воспроизводимая сборка полного API+UI стека;
 - `0ef405f` — pinned Docker digest, CI/GHCR hardening и portable artifacts;
 - `83cb82b` — упрощение Streamlit UI по запросу владельца.
+- `73d93ae` — lowercase GHCR namespace и patch release `v1.2.1`;
+- `0f3646657d7225b7e41449f8e3f2bc66daf28f55` — merge hotfix и release commit
+  итогового tag `v1.2.1`.
 
 После этих коммитов документация добавляется отдельным атомарным коммитом в
 PR №1. Лабораторная история `mlops_submission/` в новый репозиторий не
@@ -45,6 +49,9 @@ commit: изменение строки изменит SHA. Поэтому autho
 - подтверждённый PR run №3:
   <https://github.com/Agur-sama/mlops-toxic-comments/actions/runs/45493243912> —
   `quality` и `image` завершены успешно, `publish` пропущен по условию tag-only.
+- успешный release run №9:
+  <https://github.com/Agur-sama/mlops-toxic-comments/actions/runs/45495465408> —
+  `quality`, `image`, `publish` завершены успешно; оба GHCR image опубликованы.
 
-На защите откройте run для `v1.2.1`: он должен содержать успешные jobs
-`quality`, `image`, `publish` и публикацию API+UI в GHCR.
+На защите откройте release run №9: он содержит успешные jobs `quality`,
+`image`, `publish` и публикацию API+UI в GHCR.
